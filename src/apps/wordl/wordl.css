@@ -1,0 +1,205 @@
+/* ---------- board ---------- */
+.wordl-board {
+  --cell-size: clamp(48px, 14vw, 62px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0.5rem 0;
+}
+
+.wordl-row {
+  display: flex;
+  gap: 6px;
+}
+
+.wordl-cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(var(--cell-size) * 0.5);
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 2px solid var(--mui-palette-divider);
+  border-radius: 4px;
+  user-select: none;
+  transition: transform 0.1s;
+}
+
+.wordl-cell.filled {
+  border-color: var(--mui-palette-text-secondary);
+}
+
+.wordl-cell.correct {
+  background: var(--wordl-correct, #6aaa64);
+  border-color: var(--wordl-correct, #6aaa64);
+  color: #fff;
+}
+
+.wordl-cell.present {
+  background: var(--wordl-present, #c9b458);
+  border-color: var(--wordl-present, #c9b458);
+  color: #fff;
+}
+
+.wordl-cell.absent {
+  background: var(--wordl-absent, #787c7e);
+  border-color: var(--wordl-absent, #787c7e);
+  color: #fff;
+}
+
+.wordl-cell.pop {
+  animation: wordl-pop 0.1s ease;
+}
+
+@keyframes wordl-pop {
+  50% { transform: scale(1.1); }
+}
+
+/* ---------- reveal animation ---------- */
+.wordl-cell.reveal {
+  animation: wordl-flip 0.4s ease forwards;
+}
+
+@keyframes wordl-flip {
+  0% { transform: scaleY(1); }
+  50% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+
+/* ---------- keyboard ---------- */
+.wordl-keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0.75rem 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.wordl-kb-row {
+  display: flex;
+  gap: 4px;
+}
+
+.wordl-key {
+  min-width: clamp(28px, 7.5vw, 40px);
+  height: clamp(40px, 10vw, 56px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 4px;
+  font-size: clamp(0.75rem, 2.5vw, 0.95rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: var(--mui-palette-action-hover);
+  color: var(--mui-palette-text-primary);
+  transition: background 0.2s, color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  padding: 0 4px;
+}
+
+.wordl-key:active {
+  opacity: 0.8;
+}
+
+.wordl-key.wide {
+  min-width: clamp(48px, 12vw, 64px);
+  font-size: clamp(0.65rem, 2vw, 0.8rem);
+}
+
+.wordl-key.correct {
+  background: var(--wordl-correct, #6aaa64);
+  color: #fff;
+}
+
+.wordl-key.present {
+  background: var(--wordl-present, #c9b458);
+  color: #fff;
+}
+
+.wordl-key.absent {
+  background: var(--wordl-absent, #787c7e);
+  color: #fff;
+}
+
+/* ---------- toast ---------- */
+.wordl-toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  z-index: 100;
+  animation: wordl-toast-fade 1.5s ease-out forwards;
+  pointer-events: none;
+  background: var(--mui-palette-text-primary);
+  color: var(--mui-palette-background-default);
+}
+
+@keyframes wordl-toast-fade {
+  0%, 60% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ---------- stats ---------- */
+.wordl-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.wordl-stat {
+  text-align: center;
+}
+
+.wordl-stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.wordl-stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* ---------- distribution ---------- */
+.wordl-dist {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 0.5rem 0;
+}
+
+.wordl-dist-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.wordl-dist-label {
+  width: 1rem;
+  text-align: right;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.wordl-dist-bar {
+  min-width: 1.2rem;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: right;
+  color: #fff;
+  border-radius: 2px;
+}

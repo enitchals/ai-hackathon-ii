@@ -1,0 +1,142 @@
+/* Block Party styles */
+
+.bp-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.bp-board {
+  display: grid;
+  grid-template-columns: repeat(10, var(--cell-size));
+  grid-template-rows: repeat(20, var(--cell-size));
+  border: 2px solid var(--app-fg);
+  border-radius: 4px;
+  --cell-size: clamp(16px, 4.5vw, 28px);
+  width: calc(var(--cell-size) * 10);
+  height: calc(var(--cell-size) * 20);
+  overflow: hidden;
+  background: var(--app-bg);
+}
+
+.bp-cell {
+  position: relative;
+  border-right: 1px solid rgba(128, 128, 128, 0.05);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.05);
+  overflow: hidden;
+}
+
+.bp-cell-filled {
+  border-radius: 2px;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.2), inset -1px -1px 0 rgba(0,0,0,0.15);
+}
+
+.bp-cell-ghost {
+  border: 2px dashed;
+  opacity: 0.35;
+  border-radius: 2px;
+}
+
+.bp-cell-clearing {
+  animation: bp-flash 0.15s ease-in-out infinite alternate;
+}
+
+@keyframes bp-flash {
+  from { opacity: 1; }
+  to { opacity: 0.2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bp-cell-clearing {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
+/* Side panel */
+.bp-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 100px;
+}
+
+.bp-preview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: calc(var(--cell-size) * 4);
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(128,128,128,0.2);
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.bp-preview-cell {
+  border-radius: 2px;
+}
+
+.bp-preview-filled {
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.2), inset -1px -1px 0 rgba(0,0,0,0.15);
+}
+
+/* Stats */
+.bp-stat {
+  font-size: 0.85rem;
+}
+
+.bp-stat-value {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* D-pad for mobile */
+.bp-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.bp-ctrl-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: var(--accent-blue);
+  opacity: 0.6;
+  color: var(--app-bg);
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bp-ctrl-btn:active {
+  opacity: 0.9;
+  transform: scale(0.95);
+}
+
+.bp-ctrl-btn-wide {
+  width: 64px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Confetti on multi-clear (applied via JS) */
+.bp-confetti {
+  animation: bp-confetti-pop 0.6s ease-out;
+}
+
+@keyframes bp-confetti-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}

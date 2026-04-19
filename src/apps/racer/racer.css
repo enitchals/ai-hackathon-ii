@@ -1,0 +1,77 @@
+.racer-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.racer-canvas {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  touch-action: none;
+}
+
+.racer-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.racer-score {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.racer-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.racer-overlay-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.racer-overlay-sub {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.racer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+}
+
+.racer-lane-btn {
+  width: clamp(56px, 18vw, 72px);
+  height: clamp(56px, 18vw, 72px);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mui-palette-action-hover);
+  color: var(--mui-palette-text-primary);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.racer-lane-btn:active {
+  opacity: 0.7;
+}

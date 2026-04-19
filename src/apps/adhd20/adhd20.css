@@ -1,0 +1,217 @@
+/* ---------- D20 die ---------- */
+.d20-container {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0;
+}
+
+.d20 {
+  width: 140px;
+  height: 140px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s;
+}
+
+.d20:hover { transform: scale(1.05); }
+.d20:active { transform: scale(0.95); }
+
+.d20 svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+.d20-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 5%;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+  pointer-events: none;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.d20.rolling {
+  animation: d20-tumble 1.2s ease-out;
+  pointer-events: none;
+}
+
+@keyframes d20-tumble {
+  0%   { transform: rotate(0deg) scale(1); }
+  15%  { transform: rotate(72deg) scale(1.2); }
+  30%  { transform: rotate(200deg) scale(0.9); }
+  50%  { transform: rotate(320deg) scale(1.15); }
+  70%  { transform: rotate(400deg) scale(0.95); }
+  85%  { transform: rotate(350deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* ---------- roll list ---------- */
+.roll-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.roll-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.roll-list-item:nth-child(odd) {
+  background: var(--mui-palette-action-hover);
+}
+
+.roll-list-num {
+  min-width: 1.8rem;
+  font-weight: 700;
+  text-align: right;
+  opacity: 0.6;
+}
+
+.roll-list-item.reward-row {
+  font-weight: 600;
+}
+
+.roll-list-item.highlight {
+  outline: 2px solid var(--accent-yellow, #f9c74f);
+  outline-offset: -1px;
+}
+
+/* ---------- focus modal ---------- */
+.focus-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1300;
+  padding: 1rem;
+}
+
+.focus-card {
+  background: var(--mui-palette-background-paper, #fff);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.focus-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.focus-task-text {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  word-break: break-word;
+}
+
+.focus-timer {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 1rem;
+}
+
+.focus-timer.flash {
+  animation: timer-flash 0.5s ease infinite alternate;
+}
+
+@keyframes timer-flash {
+  0% { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
+.focus-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- task/reward list (CRUD) ---------- */
+.crud-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.crud-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 4px;
+}
+
+.crud-item:nth-child(odd) {
+  background: var(--mui-palette-action-hover);
+}
+
+.crud-item.top-19 {
+  border-left: 3px solid var(--accent-yellow, #f9c74f);
+}
+
+.crud-item-text {
+  flex: 1;
+  font-size: 0.9rem;
+  word-break: break-word;
+}
+
+.crud-item-timer {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.crud-item-actions {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+/* ---------- add form ---------- */
+.add-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-end;
+  padding: 0.75rem 0;
+}
+
+/* ---------- done list ---------- */
+.done-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.4rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.done-item:nth-child(odd) {
+  background: var(--mui-palette-action-hover);
+}
+
+.done-meta {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
