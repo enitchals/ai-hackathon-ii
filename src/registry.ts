@@ -1,10 +1,11 @@
 import { type ComponentType, lazy } from 'react';
+import { gameIcons, type GameIcon } from './common/icons/GameIcons';
 
 export interface AppEntry {
   id: string;
   name: string;
   description: string;
-  icon: string;
+  icon: GameIcon;
   path: string;
   component: React.LazyExoticComponent<ComponentType>;
 }
@@ -16,7 +17,7 @@ export const appRegistry: AppEntry[] = [
     id: 'worm',
     name: 'Worm',
     description: 'Guide your worm to eat fruit and grow. How long can you survive?',
-    icon: '🪱',
+    icon: gameIcons.worm,
     path: 'worm',
     component: lazy(() => import('./apps/worm/WormGame')),
   },
@@ -24,7 +25,7 @@ export const appRegistry: AppEntry[] = [
     id: 'block-buster',
     name: 'Block Buster',
     description: 'Break bricks with a bouncing ball. Be kind, rewind!',
-    icon: '📼',
+    icon: gameIcons['block-buster'],
     path: 'block-buster',
     component: lazy(() => import('./apps/block-buster/BlockBusterGame')),
   },
@@ -32,7 +33,7 @@ export const appRegistry: AppEntry[] = [
     id: 'block-party',
     name: 'Block Party',
     description: 'Stack falling blocks and clear lines. How long can you keep the party going?',
-    icon: '🎉',
+    icon: gameIcons['block-party'],
     path: 'block-party',
     component: lazy(() => import('./apps/block-party/BlockPartyGame')),
   },
@@ -40,7 +41,7 @@ export const appRegistry: AppEntry[] = [
     id: 'pac-man',
     name: 'Pac-Man',
     description: 'Eat dots, avoid ghosts, and chase high scores in the classic maze game!',
-    icon: '👻',
+    icon: gameIcons['pac-man'],
     path: 'pac-man',
     component: lazy(() => import('./apps/pac-man/PacManGame')),
   },
@@ -48,7 +49,7 @@ export const appRegistry: AppEntry[] = [
     id: 'bee',
     name: 'Spelling Bee',
     description: 'Make words from 7 letters. Use the center letter in every word!',
-    icon: '🐝',
+    icon: gameIcons.bee,
     path: 'bee',
     component: lazy(() => import('./apps/bee/BeeGame')),
   },
@@ -56,7 +57,7 @@ export const appRegistry: AppEntry[] = [
     id: 'wordl',
     name: 'Wordl',
     description: 'Guess the 5-letter word in 6 tries. Green, yellow, or grey — how fast can you solve it?',
-    icon: '🟩',
+    icon: gameIcons.wordl,
     path: 'wordl',
     component: lazy(() => import('./apps/wordl/WordlGame')),
   },
@@ -64,7 +65,7 @@ export const appRegistry: AppEntry[] = [
     id: 'racer',
     name: 'Racer',
     description: 'Dodge obstacles and collect cash in this endless lane-switching road game!',
-    icon: '🏎️',
+    icon: gameIcons.racer,
     path: 'racer',
     component: lazy(() => import('./apps/racer/RacerGame')),
   },
@@ -72,7 +73,7 @@ export const appRegistry: AppEntry[] = [
     id: 'adhd20',
     name: 'ADHD20',
     description: 'Roll a D20 to pick your next task. Gamify your to-do list!',
-    icon: '🎲',
+    icon: gameIcons.adhd20,
     path: 'adhd20',
     component: lazy(() => import('./apps/adhd20/ADHD20Game')),
   },

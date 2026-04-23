@@ -55,21 +55,22 @@ export function AppHeader() {
           </ListItemButton>
         </ListItem>
         <Divider />
-        {appRegistry.map((app) => (
-          <ListItem key={app.id} disablePadding>
-            <ListItemButton
-              selected={currentApp?.id === app.id}
-              onClick={() => handleNav(`/${app.path}`)}
-            >
-              <ListItemIcon>
-                <Typography component="span" sx={{ fontSize: '1.25rem' }}>
-                  {app.icon}
-                </Typography>
-              </ListItemIcon>
-              <ListItemText primary={app.name} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {appRegistry.map((app) => {
+          const { Component: Icon } = app.icon;
+          return (
+            <ListItem key={app.id} disablePadding>
+              <ListItemButton
+                selected={currentApp?.id === app.id}
+                onClick={() => handleNav(`/${app.path}`)}
+              >
+                <ListItemIcon sx={{ minWidth: 40 }}>
+                  <Icon style={{ width: 28, height: 28 }} />
+                </ListItemIcon>
+                <ListItemText primary={app.name} />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
       </List>
     </Box>
   );
