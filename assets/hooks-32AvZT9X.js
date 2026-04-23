@@ -1,0 +1,1 @@
+import{t as e}from"./useLocalStorage-DffY45af.js";var t=`arcade`;function n(n,r,i){return e(`${t}:${n}:${r}`,i)}export{n as t};
